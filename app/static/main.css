@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    margin: 5px;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.task-table th,
+.task-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.complete-btn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.delete-btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: #b91d1d;
+}
+
+.complete-btn:hover,
+.delete-btn:hover {
+    opacity: 0.8;
+}
+
+a.delete-btn {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #db1010;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+a.complete-btn {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #10db39;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input {
+    margin: 0;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 100px;
+    background: #9089d7;
+    text-decoration: none;
+    color: #eff1f3;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  
+.addBtn:hover {
+    background-color: #bbb;
+}
+
+.header {
+    background-color: #d8d4d4;
+    padding: 30px 40px;
+    color: rgb(14, 13, 13);
+    text-align: left;
+}
+  
+/* Clear floats after the header */
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}

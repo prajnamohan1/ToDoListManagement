@@ -1,0 +1,134 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Todo App</title> 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}"> 
+  
+</head> 
+<body> 
+    <div id="myDIV" class="header">
+        <h2>Add a Task</h2>
+        <form action="/add" method="POST">
+            <input type="text" id="title" placeholder="Title" name="title" required>
+            <input type="text" id="description" placeholder="Description" name="description" required>
+            <button class="addBtn">Add</button>
+        </form>
+    </div>
+    <h2>Task List</h2>
+
+    <label for="divSelector">Select a List:</label>
+    <select id="divSelector" onchange="showSelectedDiv()">
+        <option value="todo">To-Do</option>
+        <option value="completed">Completed</option>
+        <option value="deleted">Deleted</option>
+    </select>
+
+    <div id="todo" class="content"> 
+        <h3>Todo Items</h2> 
+        {% if incomplete %}
+          <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in incomplete %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>
+                        <a href="{{ url_for('complete', id=task.id) }}" class="complete-btn">Complete</a>
+                        <a href="{{ url_for('delete', id=task.id) }}" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No more tasks</p>
+        {% endif %}
+    </div>
+
+    <div id="completed" class="content"> 
+        <h3>Completed Items</h2> 
+        {% if complete %}
+          <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in complete %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>
+                        <a href="{{ url_for('delete', id=task.id) }}" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No completed task</p>
+        {% endif %}
+    </div>
+    <div id="deleted" class="content"> 
+        <h3>Deleted Items</h2> 
+        {% if deleted %}
+          <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in deleted %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No deleted tasks</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function showSelectedDiv() {
+            const selectedValue = document.getElementById('divSelector').value;
+
+            // Hide all divs first
+            const allDivs = document.getElementsByClassName('content');
+            for (let i = 0; i < allDivs.length; i++) {
+                allDivs[i].style.display = 'none';
+            }
+
+            // Show the selected div based on the selected option
+            const selectedDiv = document.getElementById(selectedValue);
+            selectedDiv.style.display = 'block';
+        }
+        function defaultDiv() {
+            const allDivs = document.getElementsByClassName('content');
+            for (let i = 0; i < allDivs.length; i++) {
+                allDivs[i].style.display = 'none';
+            }
+            const selectedDiv = document.getElementById('todo');
+            selectedDiv.style.display = 'block';
+
+        }
+        defaultDiv();
+    </script>
+
+</body> 
+</html> 
